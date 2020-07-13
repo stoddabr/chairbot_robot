@@ -1,0 +1,14 @@
+<launch>
+	<param name="use_sim_time" value="false"/>
+
+  <arg name="user" default="$(env USER)"/>
+  <node name="$(arg user)_jelly" pkg="chairbot_neato_node" type="jellyfish.py">
+    <param name="neato_port" value="/dev/neato" />
+  </node>
+
+  <arg name="linear_actuator" default="$(env USER)linear"/>
+  <node name="$(arg linear_actuator)" pkg="chairbot_neato_node" type="linear_actuator.py" output="screen">
+    <param name="arduino_port" value="/dev/ttyACM0" />
+  </node>
+
+</launch>

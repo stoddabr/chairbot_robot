@@ -1,0 +1,14 @@
+<launch>
+	<param name="use_sim_time" value="false"/>
+
+  <arg name="user" default="$(env USER)"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="laser_to_base"
+    args="-0.1016 0 0.0889 0 0 0 base_footprint base_laser_link 50" />
+
+  <node name="$(arg user)_jelly" pkg="chairbot_neato_node" type="follow_only.py">
+    <param name="neato_port" value="/dev/neato" />
+  </node>
+
+
+</launch>

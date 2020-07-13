@@ -1,0 +1,14 @@
+<launch>
+	<param name="use_sim_time" value="false"/>
+
+  <arg name="user" default="$(env USER)"/>
+  <node name="$(arg user)" pkg="chairbot_neato_node" type="default.py" output="screen">
+    <param name="neato_port" value="/dev/neato" />
+  </node>
+
+  <arg name="arduino" default="$(env USER)touch"/>
+  <node name="$(arg arduino)" pkg="chairbot_neato_node" type="arduino.py">
+    <param name="arduino_port" value="/dev/arduino" />
+  </node>
+
+</launch>
